@@ -1,0 +1,32 @@
+RewriteEngine On
+
+DirectoryIndex index.html
+
+# Force the canonical host and HTTPS.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\.invesystem\.com\.pt$ [NC]
+RewriteRule ^ https://www.invesystem.com.pt%{REQUEST_URI} [L,R=301]
+
+# Redirect /index.html to the homepage canonical URL.
+RewriteRule ^index\.html$ https://www.invesystem.com.pt/ [L,R=301]
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 month"
+    ExpiresByType font/woff "access plus 1 month"
+</IfModule>

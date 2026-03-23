@@ -1,18 +1,50 @@
-.invesystem-sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    background: #ffffff;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-}
 header {
     position: relative;
     z-index: 9999;
 }
 
+.home-hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.home-hero .hero-media {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+}
+
+.home-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.services-card-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.services-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--base-color);
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+}
+
 .services-card-img img {
+    display: block;
     height: 240px;
     object-fit: cover;
+    width: 100%;
+    filter: saturate(0.92) contrast(1.02);
+    transition: transform 0.3s ease;
 }
 
 .services-card {
@@ -21,6 +53,14 @@ header {
 
 .services-card:hover {
     transform: translateY(-6px);
+}
+
+.services-card:hover .services-card-img::after {
+    opacity: 0.34;
+}
+
+.services-card:hover .services-card-img img {
+    transform: scale(1.03);
 }
 
 .flex-card {
@@ -54,4 +94,120 @@ h3 {
 h1,
 h2 {
     font-weight: 500;
+}
+
+.navbar-brand img {
+    max-height: 42px;
+    width: auto;
+}
+
+.navbar-nav .nav-link.active {
+    color: #daebfe;
+    font-weight: 500;
+}
+
+.page-eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.page-intro {
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.page-title-parallax-background {
+    position: relative;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+}
+
+.contact-card p,
+.contact-card a {
+    color: var(--dark-gray);
+}
+
+.bg-dark-blue {
+    background-color: #0e2a47;
+}
+
+.location-bg {
+    background-image: url(../images/bg-angra.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* =========================================================
+   2) FOOTER
+   ========================================================= */
+
+footer .footer-logo img {
+    max-height: 80px;
+    height: 100%;
+    width: auto;
+}
+
+/* barra apoios */
+footer .footer-bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 20px;
+}
+footer .footer-bottom-container a {
+    height: 40px;
+}
+footer .footer-bottom-container .img-apoios {
+    height: 40px;
+    width: auto;
+}
+
+/* Social icons no footer */
+footer .social-icons {
+    margin-right: 6px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+    footer .footer-brand-block {
+        margin-bottom: 30px;
+        text-align: center !important;
+    }
+
+    footer .footer-links-block {
+        margin-bottom: 25px;
+    }
+
+    footer .footer-links-block,
+    footer .footer-contact-block {
+        width: 80%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        flex: 0 0 80%;
+        text-align: center !important;
+    }
+
+    footer .footer-links-block ul,
+    footer .footer-contact-block ul {
+        padding-left: 0;
+    }
 }
